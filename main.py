@@ -1,14 +1,17 @@
-from aiogram import executor
-from config import dp
-from handlers import client, admin
+import asyncio
+from handlers.client import client_register_handlers
+from handlers.admin import admin_register_handlers
+from config import dp, bot
+from aiogram.methods import DeleteWebhook
 
-client.register_handlers_client(dp)
-admin.register_handlers_client(dp)
 
-
-async def start_bot(_):
-    print('Bot is online ->', _)
+async def main():
+    print('Bot is online!✅')
+    await bot(DeleteWebhook(drop_pending_updates=True))
+    await dp.start_polling(bot)
 
 
 if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True, on_startup=start_bot)
+    client_register_handlers(dp)
+    admin_register_handlers(dp)
+    asyncio.run(main())

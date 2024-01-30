@@ -1,11 +1,12 @@
-from aiogram import types, Dispatcher
 from config import bot
+from aiogram import types, Dispatcher, F
+from aiogram.filters.command import Command
 from settings import ADMINS
 
 
-async def send_welcome(message: types.Message):
-    await bot.send_message(ADMINS[0], '😉')
+async def cmd_start(message: types.Message):
+    await bot.send_message(message.from_user.id, 'hello world')
 
 
-def register_handlers_client(dp: Dispatcher):
-    dp.register_message_handler(send_welcome, commands=['something'])
+def admin_register_handlers(dp: Dispatcher):
+    dp.message.register(cmd_start, Command('admin_panel'))
