@@ -12,17 +12,17 @@ from middlewares.admin_check import AdminOnlyMiddleware
 from middlewares.rate_limit import RateLimitMiddleware
 
 
-async def init_db():
+async def init_db() -> None:
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
 
-async def drop_all():
+async def drop_all() -> None:
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
 
 
-async def main():
+async def main() -> None:
     await drop_all()  # temporary
     await init_db()
     print(f'[{bot.id} | {await bot.get_my_name()}] is online!✅')

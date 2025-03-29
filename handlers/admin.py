@@ -8,7 +8,7 @@ async def cmd_start(message: types.Message) -> None:
     await service_admin_panel(bot=bot, message=message)
 
 
-async def cmd_media(message: types.Message):
+async def cmd_media(message: types.Message) -> None:
     await service_admin_file(bot=bot, message=message)
 
 
