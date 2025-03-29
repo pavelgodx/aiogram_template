@@ -10,4 +10,4 @@ async def cmd_help(message: types.Message) -> None:
 
 
 def extra_register_handlers(dp: Dispatcher) -> None:
-    dp.message.register(cmd_help, Command('help'))
+    dp.message.register(cmd_help, Command('help') , flags={'throttle': 0.0})

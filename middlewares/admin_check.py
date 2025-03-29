@@ -22,7 +22,7 @@ class AdminOnlyMiddleware(BaseMiddleware):
             username = event.from_user.username
             if int(user_id) not in ADMINS:
                 logger.warning(f"User {user_id} | {username} is not admin!")
-                await event.answer("You're not admin!")
+                await event.answer("You're not admin!")  # optional
                 return
 
         return await handler(event, data)

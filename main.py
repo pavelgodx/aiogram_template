@@ -9,6 +9,7 @@ from aiogram.methods import DeleteWebhook
 
 from handlers.extra import extra_register_handlers
 from middlewares.admin_check import AdminOnlyMiddleware
+from middlewares.rate_limit import RateLimitMiddleware
 
 
 async def init_db():
@@ -31,6 +32,7 @@ async def main():
 
 if __name__ == '__main__':
     dp.message.middleware(AdminOnlyMiddleware())
+    dp.message.middleware(RateLimitMiddleware(default_delay=1.5))
 
     client_register_handlers(dp)
     admin_register_handlers(dp)
