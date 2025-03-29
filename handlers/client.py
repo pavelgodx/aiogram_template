@@ -1,15 +1,12 @@
-from aiogram import Dispatcher, types
+from aiogram import types, Dispatcher, F
 from aiogram.filters.command import Command
-
 from config import bot
+from services.client import service_cmd_start
 
 
-# ----------------------------------- TOOLS ----------------------------------- #
-
-async def cmd_start(message: types.Message):
-    await bot.send_message(message.from_user.id, 'hello world! ;)')
+async def cmd_start(message: types.Message) -> None:
+    await service_cmd_start(bot=bot, message=message)
 
 
-def client_register_handlers(dp: Dispatcher):
-    # Tools
+def client_register_handlers(dp: Dispatcher) -> None:
     dp.message.register(cmd_start, Command('start'))
