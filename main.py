@@ -34,7 +34,7 @@ if __name__ == '__main__':
     dp.message.middleware(AdminOnlyMiddleware())
     dp.message.middleware(RateLimitMiddleware(default_delay=1.5))
 
-    client_register_handlers(dp)
     admin_register_handlers(dp)
+    client_register_handlers(dp)
     extra_register_handlers(dp)
     asyncio.run(main())

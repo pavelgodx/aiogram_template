@@ -10,7 +10,7 @@
 #         model="gpt-4o",
 #         messages=[
 #             {"role": "developer",
-#              "content": "you are my friend, communicate like the best friend, joke, ask strange questions, be a living person"},
+#              "content": "you are my friend, communicate like the best friend, joke, ask strange questions"},
 #             {"role": "user", "content": prompt}
 #         ]
 #     )

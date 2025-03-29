@@ -28,7 +28,7 @@ async def service_cmd_start(bot: Bot, message: Message) -> None:
 
 
 async def service_handle_text(bot: Bot, message: Message) -> None:
-    await bot.send_chat_action(chat_id=message.from_user.id, action='typing')
+    # await bot.send_chat_action(chat_id=message.from_user.id, action='typing')
     # answer = ask_chatgpt(prompt=message.text)
     # if not answer:
     #     return
